@@ -1,0 +1,47 @@
+
+
+
+    
+    
+      <section class="products">
+        
+      <mat-card class="card" *ngFor="let product of products">
+    
+        <mat-card-header>
+          <mat-card-title>
+          <div class="container-img">
+            <div class="star">
+    
+              <mat-icon class="star" *ngFor="let stairs of  paintStars(product.rating.rate)">
+               star </mat-icon>
+               </div>
+          <img [src]="product.image" alt="">
+          </div>
+        </mat-card-title>
+        </mat-card-header>
+       
+        <mat-card-content>
+          
+          <a [routerLink]="['description/',product.id]"  class="text-center" >
+          {{product.title}}
+          
+        </a>
+     </mat-card-content>
+      <mat-card-actions class="container-button">
+      
+        <a [routerLink]="['description/', product.id]">
+          <!--se cambiaron los textos de los botones, y su routter link no hubo cambio de estilo ni nada  -->
+          <button mat-raised-button color="primary" >{{ product.price | currency }} Comprar Ahora!</button>
+        </a>
+  
+      </mat-card-actions>
+      </mat-card>
+      
+      </section>
+    
+      
+      
+      
+      
+      
+

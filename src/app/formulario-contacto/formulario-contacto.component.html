@@ -1,0 +1,37 @@
+
+<div class="centered-label">
+    <label>FORMULARIO DE CONTACTO</label>
+  </div>
+
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" formControlName="nombre">
+  
+    <label for="email">Correo electrónico</label>
+    <input type="email" id="email" formControlName="email">
+    <!-- Mensaje de error si falta el símbolo '@' en el correo electrónico.
+     Se utiliza el signo de interrogación (?) para verificar si formulario.get('email') no es null 
+     o undefined. Esto es importante porque, si formulario.get('email') es null, acceder a hasError o touched
+      directamente provocaría un error en tiempo de ejecución. -->
+    <div *ngIf="formulario.get('email')?.hasError('missingAt') && formulario.get('email')?.touched" class="error-message">
+        Falta el símbolo '@' en el correo electrónico.
+      </div>
+  
+    <label for="asunto">Asunto</label>
+    <input type="text" id="asunto" formControlName="asunto">
+  
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" formControlName="mensaje"></textarea>
+  
+    <button type="submit">Enviar</button>
+  </form>
+
+ <!-- Mensaje "MENSAJE ENVIADO CORRECTAMENTE" que se muestra cuando mensajeEnviado es verdadero.
+     La directiva *ngIf verifica si mensajeEnviado es verdadero antes de mostrar el mensaje.
+     La clase "mensaje-enviado" se aplica al elemento div para aplicar estilos de presentación.
+-->
+<h3>
+    <div *ngIf="mensajeEnviado" class="mensaje-enviado">
+        MENSAJE ENVIADO CORRECTAMENTE
+    </div>
+</h3>

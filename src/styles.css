@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+/* se puso al css principal un fondo con sus caracteristicas*/
+html, body { height: 100%; }
+body { 
+    
+        background-image: url('https://www.xtrafondos.com/wallpapers/hojas-de-maple-11582.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

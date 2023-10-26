@@ -1,0 +1,26 @@
+<section class="products">
+    <mat-card class="card" >
+      <mat-card-header>
+        <mat-card-title>
+        <div class="container-img">
+        <img [src]="product.image" alt="">
+        </div>
+      </mat-card-title>
+      </mat-card-header>
+      
+      <mat-card-content>
+        <a [routerLink]="['description',product.id] " class="text-center">
+        {{product.title}}
+      </a>
+      
+      </mat-card-content>
+    <mat-card-actions class="container-button">
+    
+     
+    <button mat-raised-button color="primary">{{product.price |currency}}</button> 
+    
+    
+    </mat-card-actions>
+    </mat-card>
+    </section>
+

@@ -1,0 +1,67 @@
+<!-- Establece una preconexión con el dominio "fonts.googleapis.com" -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+
+<!-- Establece una preconexión con el dominio "fonts.gstatic.com" y permite el uso de "crossorigin" -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+<!-- Carga una hoja de estilos desde "fonts.googleapis.com" para usar la fuente "Kumbh Sans" -->
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet" />
+
+<!-- Contenedor principal -->
+<div class="container">
+  <div class="row">
+    <!-- Columna para mostrar una imagen del producto -->
+    <div class="col-12 col-lg-6 mt-4">
+      <img [src]="product.image" alt="" />
+    </div>
+
+    <!-- Columna para mostrar la información del producto -->
+    <div class="col-12 col-lg-6 mt-4">
+      <mat-card class="card">
+        <mat-card-title class="mt-4">
+          <!-- Título del producto -->
+          <p>{{ product.title }}</p>
+        </mat-card-title>
+        <mat-card-content>
+          <div class="icon">
+            <!-- Muestra estrellas de calificación del producto -->
+            <mat-icon *ngFor="let product of paintStars(product.rating[0])">star</mat-icon>
+          </div>
+          <span class="category">
+            <!-- Muestra la categoría del producto -->
+            Categoría
+            <p>{{ product.category }}</p>
+          </span>
+          <!-- Descripción del producto -->
+          {{ product.description }}
+          <div class="container-gadget">
+            <!-- Etiqueta que indica que el producto está en stock -->
+            <span class="badge bg-success">En stock</span>
+            <span class="badge bg-secondary">
+              <!-- Muestra la cantidad de unidades disponibles -->
+              Quedan {{ product.rating[1] }} Unidades
+            </span>
+          </div>
+          <p class="text-center">Cantidad</p>
+          <div class="action-buy">
+            <!-- Botones para incrementar y decrementar la cantidad de productos, SE LLAMA AL EVENTO CLICK Y A LA FUNCION -->
+            <button class="btn btn-danger" (click)="decrement(1)">-</button>
+            <input style="text-align: center;" type="text" value="{{counter}}" class="form-control" [max]="product.rating[1]">
+            <button class="btn btn-primary" (click)="increment(1)">+</button>
+          </div>
+          <br>
+          <h3>
+            <!-- Muestra el total del carrito de compras -->
+            <p>Total: {{total}}</p>
+          </h3>
+        </mat-card-content>
+        <mat-card-actions class="d-flex justify-content-center m-4">
+          <!-- Botón para realizar la compra -->
+          <button mat-raised-button color="primary" (click)="realizarCompra()">
+            <mat-icon>add_shopping_cart</mat-icon> Comprar
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
